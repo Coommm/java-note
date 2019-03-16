@@ -1,0 +1,77 @@
+1. Rename 
+Rename重构的功能就是重命名Java元素。当Java元素的命名不清晰或功能发生改变的时，为了保持代码的可读性，可以通过Eclipse的重构功能重命名Java元素。选择相应的Java元素，选择右键Refactor菜单下的Rename菜单可以对当前选择的元素进行重命名，在弹出的重命名对话框中修改相应的元素名称即可，例如修改一个包的重命名
+
+2. Move 
+Move的重构和Rename的重构类似，它可以把一个Java元素从一个地方移动到另一个地方，Move的重构主要用来移动一个类到不同的包下。
+
+3. Change Method Signature 
+“Change Method Signature”重构的功能是改变方法的定义，例如改变方法的参数名称、类型和个数、返回值的类型，方法的可见性以及方法的名称等。 
+用它可以改变方法后，其他类对方法的引用也会跟着改变。
+
+4. Convert Anonymous Class to Nested 
+“Convert Anonymous Class to Nested”重构的功能是把匿名类改成内部类，这样同一个类的其它部分也可以共享此类了。
+也可以通过“Convert Anonymous Class to Nested”对话框定义新生成的内部类的可访问性。 
+
+5. Move Member Type to Top Level 
+通过“Move Member Type to Top Level”的重构方式，可以把内部类改成非内部类，并且重新创建一个新的文件，这样其它的类就可以共享此类。 
+
+类级别重构 
+1. Push Down 
+“Push Down”重构功能是把父类的方法和属性移动到所有的子类中，父类的方法可以选择性的保留抽象方法。首先选择父类，右键选择Refactor菜单的“Push Down”菜单项，可以通过“Push Down”对话框选择重构
+“Push Down”重构在重新设计类的时候是非常有用的，它可以比较有较的改善类的继承关系，清楚定义类的行为。 
+
+2. Pull Up 
+“Pull Up”重构和“Push Down”重构正好相反，它的作用是把方法和属性移动到其父类中去。选择需要重构的子类，从右键菜单选择Refactor菜单的“Pull up”菜单项，通过“Pull Up”对话框进行重构
+提示：“Pull Up”重构和“Push Down”重构后可能会出错，在使用此重构的同时，应该先弄清楚某些方法中是否有引用到其它方法或属性。 
+
+3. Extract Interface 
+“Extract Interface”重构能够从一个已存在的类中提取接口，它可以从某个类中选择方法，把这些方法提取到一个单独的接口中。选择提取接口的类，右键选择Refactor菜单的“Extract Interface”菜单项，打开“Extract Interface”对话框
+提示：只有公用方法才可以被提取为接口的方法。 
+
+4. Generalize Declared Type 
+“Generalize Declared Type”重构能够改变变量、参数、属性以及函数的返回值的类型，可以把这些类型改成其父类的类型。
+
+5. User Supertype Where Possible 
+“User Supertype Where Possible”重构能够用某一个类的父类的类型替换当前类的类型，选择需要被替换引用的类。
+“Generalize Declared Type”重构和“User Supertype Where Possible”重构在面向接口编程方面是很有用的，可以把引用的对象尽可能用接口进行实现。
+提示：“User Supertype Where Possible”重构将替换其它类中的引用，要想看到重构的效果，应该找到其它类引用的位置，此操作不会修改当前文件。
+
+类内部重构 
+类内部重构有如下一些： 
+1. Inline 
+“Inline”重构能用函数的内容替换掉函数的引用。首先选择函数的引用，在Refactor菜单中选择“Inline”打开“Inline”对话框
+单击确定按钮，Eclipse将会用方法实现的部分替换引用的部分，即当前不采用方法调用的方式进行操作。也可以选择“All invocations”和“Delete method declaration”，Eclipse会替换掉所有引用方法的位置，并且删除方法。
+提示：Inline会用方法的实现部分替换所有调用方法的地方。 
+
+2. Extract Method 
+“Extract Method”重构和“Inline”重构相反，它能够从冗长的方法中提取小的方法，把大的方法分解成多个小方法来实现，通过此重构能够使代码看上去更简单漂亮，也很大程度上提高代码的复用性。可以选择要提取方法的代码，在Refactor菜单中选择“Extract Method”打开“Extract Method”对话框
+“Extract Method”重构是非常好的重构方式，能够把大的方法体重构成多个方法的实现，使代码更清楚易懂。
+提示：“Extract Method”重构和“Inline”重构是对应的，有些时候为了组织一些不合的函数，可以先通过“Inline”的方式生成一个大的函数，再通过“Extract Method”来重构大的函数，使代码更趋于合理。
+
+3. Extract Local Variable 
+在开发过程中，使用变量代替表达式是非常好的，这样能使代码更容易被理解。Eclipse中可以通过“Extract Local Variable”重构实现提取局部的表达式。首先选择表达式，在Refactor菜单中选择“Extract Local Variable”打开“Extract Local Variable”对话框
+
+4. Extract Constant 
+“Extract Constant”重构和“Extract Local Variable”重构类似，它可以把表达式定义为常量，另外“Extract Constant”重构能够设定常量的可见性。选择表达式，在Refactor菜单中选择“Extract Constant”打开“Extract Constant”对话框
+
+5. Introduce Parameter 
+“Introduce Parameter”重构可以通过函数中的表达式、变量或引用为函数添加新的参数，还能够自动更新引用此函数的其它位置的默认参数。要想进行“Introduce Parameter”重构，可以选择表达式、变量或引用。在Refactor菜单中选择“Introduce Parameter”打开“Introduce Parameter”对话框
+
+6. Introduce Factory 
+“Introduce Factory”重构能够为类创建工厂方法。首先选择需要创建工厂方法的类的构造函数，在Refactor菜单中选择“Introduce Factory”打开“Introduce Factory”对话框
+在“Introduce Factory”对话框中，可以输入工厂方法的名字，以及工厂类，Eclipse将会自动根据构造函数创建工厂方法。 
+提示：工厂类应该已经存在，通常可以在一个工厂类中为多个关联的类创建工厂方法，所以在使用“Introduce Factory”重构前，应该先创建好工厂类。 
+
+7. Convert Local Variable to Field 
+“Convert Local Variable to Field”重构能够把局部的变量转换成类中的全局变量。首先选择要转换的局部变量，在Refactor菜单中选择“Convert Local Variable to Field”打开“Convert Local Variable to Field”对话框
+在“Convert Local Variable to Field”对话框中，还能够修改变量的名称以及变量的可见性。 
+
+8. Encapsulate Field 
+“Encapsulate Field”重构能够包装属性的可访问性，以及生成访问的方法。首先选择要包装的属性，在Refactor菜单中选择“Encapsulate Field”打开“Encapsulate Field”对话框
+通常通过“Encapsulate Field”可以生成get和set方法。在“Encapsulate Field”对话框中可以输入属性的访问方法的名称，以及方法生成的位置和方法的可见性。
+提示：通过右键菜单的Source菜单也能生成相应的get和set方法。 
+--------------------- 
+作者：酷鱼影子 
+来源：CSDN 
+原文：https://blog.csdn.net/kuyuyingzi/article/details/37612911 
+版权声明：本文为博主原创文章，转载请附上博文链接！
